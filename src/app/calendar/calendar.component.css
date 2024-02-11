@@ -1,0 +1,35 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shortEvent {
+  margin-top: 20px;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 100;
+  position: inherit;
+}
+
+.eventBlock {
+  position: relative;
+}
+
+.fullEvent {
+  border: 1px solid;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 10px;
+  top: 20px;
+  width: 97.2%;
+  border-top: 0;
+  background-color: #fff;
+}
+
+.block input, .block textarea, .block button{
+  border-radius: 8px;
+  padding: 10px;
+}
+

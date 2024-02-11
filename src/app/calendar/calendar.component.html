@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="shadowBlock">
+    <div style="margin: 10px;">
+      <h2>Календарь событий</h2>
+
+      <h3>Добавить/Редактировать событие</h3>
+
+      <form #eventForm="ngForm" (ngSubmit)="selectedEvent ? updateEvent(selectedEvent) : addEvent(eventForm.value)" class="block">
+        <label for="title">Заголовок:</label>
+        <input type="text" id="title" name="title" [ngModel]="selectedEvent?.title" (ngModelChange)="selectedEvent ?? (selectedEvent.title = $event)" required />
+
+        <label for="description">Описание:</label>
+        <textarea id="description" name="description" [ngModel]="selectedEvent?.description" (ngModelChange)="updateDescription($event)"></textarea>
+
+
+        <label for="date">Дата:</label>
+        <input type="date" id="date" name="date" [(ngModel)]="selectedEvent && selectedEvent.date" required />
+
+        <button type="submit">{{ selectedEvent ? 'Обновить' : 'Добавить' }}</button>
+      </form>
+
+
+      <div class="eventBlock">
+        <div *ngFor="let event of events" class="shortEvent">
+          <div (click)="selectEvent(event)">
+            {{ event.title }} - {{ event.date | date:'short' }}
+          </div>
+        </div>
+
+        <div *ngIf="selectedEvent" class="fullEvent">
+          <h3>{{ selectedEvent.title }}</h3>
+          <p>{{ selectedEvent.description }}</p>
+          <p>{{ selectedEvent.date | date:'full' }}</p>
+
+          <button (click)="removeEvent(selectedEvent.id)">Удалить событие</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

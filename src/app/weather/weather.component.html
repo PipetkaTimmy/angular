@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="shadowBlock">
+      <div style="margin: 10px;">
+        <h2 style="text-align: center;">Погодный сервис</h2>
+        <div class="weatherSearch">
+          <label class="weatherLabel" for="city">Введите город:</label>
+          <input class="weatherInput" type="text" id="city" [(ngModel)]="city" name="city" placeholder="Например Астана"/>
+          <button class="weatherButton" (click)="getWeather()">Получить погоду</button>
+        </div>
+
+
+        <div *ngIf="weatherData" class="weatherData">
+          <div>
+            <h3>Погода в {{ weatherData.name }}, {{ weatherData.sys.country }}</h3>
+            <p class="weatherLabel">Температура: {{ convertKelvinToCelsius(weatherData.main.temp) | number:'1.0-1' }}°C</p>
+            <p class="weatherLabel">Описание: {{ weatherData.weather[0].description }}</p>
+          </div>
+          <button class="weatherButton" (click)="removeCity(weatherData.name)">Очистить</button>
+        </div>
+
+
+        <h2 style="margin-top: 80px; text-align: center;">Список городов:</h2>
+        <ul *ngIf="cities.length > 0; else noCities">
+          <li *ngFor="let city of cities" class="listElement">
+            {{ city }} <button (click)="removeCity(city)" class="weatherButton" style="font-size: 14px; padding: 6px 18px">Удалить</button>
+          </li>
+        </ul>
+        <ng-template #noCities>
+          <p>Пока нет записанных городов.</p>
+        </ng-template>
+      </div>
+  </div>
+</div>

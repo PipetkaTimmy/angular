@@ -1,0 +1,21 @@
+.navbar {
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.link {
+  font-size: 18px;
+  text-decoration: none;
+  color: #000;
+}
+
+/* @media (max-width: 840px){
+  .navbar{
+    width: 100%;
+  }
+} */
+
